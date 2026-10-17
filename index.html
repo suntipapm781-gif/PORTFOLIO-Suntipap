@@ -7,6 +7,12 @@
   <title>PORTFOLIO : SUNTIPAP MEEMANGKANG</title>
 
   <style>
+    :root {
+      --nav-height: 68px;      /* ความสูงของแถบเขียวด้านบน */
+      --nav-height-mobile: 56px;
+      --hero-trim: 0px;        /* ถ้าไฟล์ 8.png มีขอบขาวด้านบน ให้ใส่ค่าที่ต้องการครอปออก เช่น 100px */
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -18,9 +24,10 @@
     }
 
     body {
-      background: #ffffff;
+      background: #0b0b0b;
       color: #111111;
       font-family: Arial, Helvetica, sans-serif;
+      padding-top: var(--nav-height); /* ดันเนื้อหาลงมาให้ชิด nav พอดี */
     }
 
     /* =========================
@@ -32,10 +39,12 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 18px 28px;
+      height: var(--nav-height);
+      padding: 0 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: #384a38;
       z-index: 100;
     }
 
@@ -64,52 +73,37 @@
 
     #home {
       width: 100%;
-      margin: 0;
-      padding: 0;
+      scroll-margin-top: var(--nav-height);
     }
 
     .hero {
       width: 100%;
-      margin: 0;
-      padding: 0;
+      overflow: hidden; /* ใช้ซ่อนส่วนที่ครอปออก */
     }
 
     .hero img {
       display: block;
       width: 100%;
       height: auto;
-      max-width: none;
+      margin-top: calc(var(--hero-trim) * -1);
     }
 
     /* =========================
-       WORKS
+       WORKS (ภาพต่อกันเลย ไม่มีช่องว่าง)
     ========================= */
 
     #works {
       width: 100%;
-      padding: 100px 0;
-    }
-
-    .works-container {
-      width: 100%;
-      margin: 0;
     }
 
     .work {
       width: 100%;
-      margin-bottom: 120px;
     }
 
     .work img {
       display: block;
       width: 100%;
       height: auto;
-    }
-
-    .work-title {
-      padding: 18px 28px 0;
-      font-size: 18px;
-      font-weight: 700;
     }
 
     /* =========================
@@ -121,6 +115,8 @@
       padding: 120px 28px;
       display: flex;
       align-items: center;
+      background: #ffffff;
+      scroll-margin-top: var(--nav-height);
     }
 
     .contact-container {
@@ -145,8 +141,18 @@
 
     @media (max-width: 600px) {
 
+      body {
+        padding-top: var(--nav-height-mobile);
+      }
+
       nav {
-        padding: 16px 18px;
+        height: var(--nav-height-mobile);
+        padding: 0 18px;
+      }
+
+      #home,
+      #contact {
+        scroll-margin-top: var(--nav-height-mobile);
       }
 
       .logo {
@@ -161,15 +167,6 @@
         font-size: 11px;
       }
 
-      #works {
-        padding: 60px 0;
-      }
-
-      .work-title {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
       #contact {
         padding: 100px 18px;
       }
@@ -180,9 +177,7 @@
 <body>
 
   <!-- HEADER -->
-
   <nav>
-
     <div class="logo">
       PORTFOLIO : SUNTIPAP MEEMANGKANG
     </div>
@@ -191,77 +186,44 @@
       <a href="#home">HOME</a>
       <a href="#contact">CONTACT</a>
     </div>
-
   </nav>
 
 
   <!-- HERO -->
-
   <section id="home">
-
     <div class="hero">
-
-      <img
-        src="works/8.png"
-        alt="Portfolio Hero"
-      >
-
+      <img src="works/8.png" alt="Portfolio Hero">
     </div>
-
   </section>
-
-  <section id="works">
-
-  <div class="works-container">
-
-    <div class="work">
-      <img src="works/5.png" alt="Work 03">
-    </div>
-
-  </div>
-
-</section>
 
 
   <!-- WORKS -->
-
   <section id="works">
 
-    <div class="works-container">
-
-      <!-- งานอื่น ๆ จะเพิ่มตรงนี้ -->
- <div class="work">
-      <img src="works/6.png" alt="Work 03">
+    <div class="work">
+      <img src="works/5.png" alt="Work 01">
     </div>
 
-  </div>
+    <div class="work">
+      <img src="works/6.png" alt="Work 02">
+    </div>
 
-     <div class="work">
+    <div class="work">
       <img src="works/7.png" alt="Work 03">
     </div>
 
-  </div>
-    
+    <!-- งานอื่น ๆ เพิ่มตรงนี้ได้เลย -->
 
   </section>
 
 
   <!-- CONTACT -->
-
   <section id="contact">
-
     <div class="contact-container">
-
       <h2>CONTACT</h2>
-
-      <p>
-        Email / Instagram / Other Contact
-      </p>
-
+      <p>Email / Instagram / Other Contact</p>
     </div>
-
   </section>
-
 
 </body>
 </html>
